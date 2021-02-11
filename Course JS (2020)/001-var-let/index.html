@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JavaScript</title>
+  </head>
+
+  <body>
+    <h1>Basic JavaScript</h1>
+    <script>
+      // global
+      var hola = "Hola Mundo";
+
+      // block
+      let hello = "Hello world";
+
+      // object window
+      console.log(window.hola);
+      console.log(window.hello);
+
+      // var
+      var music = "rock";
+      console.log("music variable before the block", music);
+      {
+        var music = "pop";
+        console.log("music variable into the block", music);
+      }
+      console.log("music variable after the block", music);
+
+      // let
+      let sport = "tenis";
+      console.log("sport variable before the block", sport);
+      {
+        let sport = "golf";
+        console.log("sport variable into the block", sport);
+      }
+      console.log("sport variable after the block", sport);
+    </script>
+  </body>
+</html>
