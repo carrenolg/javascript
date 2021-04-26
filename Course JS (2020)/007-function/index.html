@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function</title>
+  </head>
+  <body>
+    <script>
+      // function
+      // las funciones son objetos
+      // city first class:
+      // Son tratadas como un tipo de dato
+
+      // función declarada #
+      function suma(x, y) {
+        return x + y;
+      }
+      console.log(suma(15.0, 2.3));
+
+      // mutiples return
+      function multiple() {
+        return 1;
+        return 2; // unreachable code
+      }
+      console.log(multiple()); // 1
+
+      // parametros no inicializados
+      function resta(x, y) {
+        return x - y;
+      }
+      console.log(resta()); // NaN
+      console.log(resta(20, 10));
+
+      // parametros inicializados
+      function sub(x = 0, y = 0) {
+        return x - y;
+      }
+      console.log(sub()); // 0
+      console.log(sub(20, 10));
+
+      // hoisting en funciones
+      // call before declaration
+      saludar("Luis");
+
+      function saludar(name) {
+        console.log("Hola, mi nombre es", name);
+      }
+
+      // call after declaration
+      saludar("gio");
+
+      // función expresada #
+      const f = function () {
+        console.log("This is a expresion function");
+      };
+      // call
+      f();
+    </script>
+  </body>
+</html>

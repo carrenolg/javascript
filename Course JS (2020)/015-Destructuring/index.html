@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destructuring</title>
+  </head>
+  <body>
+    <script>
+      // assigment
+      let a, b, rest;
+      [a, b] = [10, 20];
+
+      console.log(a); // 10
+      console.log(b); // 20
+
+      [a, b, ...rest] = [10, 20, 30, 40, 50];
+
+      console.log(rest);
+
+      // object
+      let persona = {
+        nombre: "Gio",
+        edad: 31,
+        email: "gio@gmail.com",
+      };
+
+      let { nombre, edad, email } = persona;
+
+      console.log(nombre);
+      console.log(edad);
+      console.log(email);
+
+      // Swapping variables
+      let x = 200;
+      let y = 300;
+      [x, y] = [y, x];
+      console.log(x);
+      console.log(y);
+    </script>
+  </body>
+</html>

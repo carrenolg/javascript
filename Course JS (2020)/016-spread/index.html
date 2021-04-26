@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spread</title>
+  </head>
+  <body>
+    <script>
+      function sum(a, b) {
+        return a + b;
+      }
+      console.log(sum(5, 5));
+
+      // spread parameters
+      function sum(a, b, ...par) {
+        let result = 0;
+        par.forEach((element) => {
+          result += element;
+        });
+        return a + b + result;
+      }
+
+      console.log(sum(5, 5, 10, 20, 30, 40, 50));
+    </script>
+  </body>
+</html>

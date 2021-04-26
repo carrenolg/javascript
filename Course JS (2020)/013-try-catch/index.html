@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try Catch</title>
+  </head>
+  <body>
+    <script>
+      // try catch
+      try {
+        sum(); // Not defined
+      } catch (error) {
+        console.log(error); // ReferenceError: sum is not defined
+      }
+
+      // try - cath - finally
+      try {
+        let x = 1;
+        let y = 0;
+        if (y === 0) {
+          throw new Error("Divide by 0");
+        }
+        let r = x / y;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        console.log("Execution Finished");
+      }
+    </script>
+  </body>
+</html>

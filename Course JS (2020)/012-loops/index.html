@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loops</title>
+  </head>
+  <body>
+    <script>
+      // do - while
+      let i = 0;
+      do {
+        console.log(i);
+        i++;
+      } while (i < 100);
+
+      // for
+      for (let j = 0; j < 100; j++) {
+        console.log(j, "JS");
+      }
+
+      // for on arrays
+      a = Array(10).fill("JavaScript 2021");
+
+      for (const index in a) {
+        console.log(index);
+      }
+      for (const item of a) {
+        console.log(item);
+      }
+    </script>
+  </body>
+</html>

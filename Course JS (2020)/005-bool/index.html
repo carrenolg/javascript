@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bool</title>
+  </head>
+  <body>
+    <script>
+      // In JavaScript, a truthy value is a value that is considered true
+      // when encountered in a Boolean context.
+      let truthy = "";
+      let t1 = 0;
+      let t2 = undefined;
+      console.log(Boolean(truthy)); // flase
+      console.log(Boolean(t1)); // false
+      console.log(Boolean(t2)); // false
+      let t3 = "1";
+      let t4 = 1;
+      let t5 = "char";
+      console.log(Boolean(t3)); // true
+      console.log(Boolean(t4)); // true
+      console.log(Boolean(t5)); // true
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NaN - undefined - null</title>
+  </head>
+  <body>
+    <script>
+      // undefined: valor no definido
+      // no tiene valor
+      let v;
+      console.log(typeof v); // undefined
+      console.log(v); // undefined
+
+      // null: valor definido
+      // si tiene valor
+      let n = null;
+      console.log(typeof n); // object
+      console.log(n); // null
+
+      // NaN: Not a Number
+      let num = 15;
+      let str = "hola";
+      r = num * str;
+      console.log(typeof r);
+      console.log(r); // NaN
+    </script>
+  </body>
+</html>

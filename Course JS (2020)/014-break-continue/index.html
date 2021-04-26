@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Break - Continue</title>
+  </head>
+  <body>
+    <script>
+      let numbers = [1.0, 2.0, 3.0, "3.1F", 4.0, 5.0];
+      // break
+      for (const v of numbers) {
+        if (isNaN(v)) {
+          break;
+        }
+        console.log(v);
+      }
+      // continue
+      let sum = 0;
+      for (const v of numbers) {
+        if (isNaN(v)) {
+          sum += 0;
+          continue;
+        }
+        sum += v;
+        console.log(sum);
+      }
+      console.log(sum);
+    </script>
+  </body>
+</html>

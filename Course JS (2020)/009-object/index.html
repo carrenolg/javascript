@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <script>
+      // Object
+      const persona = {
+        nombre: "Luis",
+        apellido: "Carreño",
+        redes: {
+          IG: "DiosyFútbol",
+          Twitter: "giovanet13",
+          gmail: "carrenolg",
+        },
+        saludar: function () {
+          console.log("Hola!!");
+        },
+        fullname: function () {
+          console.log(`${this.nombre} ${this.apellido}`);
+        },
+      };
+      persona.saludar();
+      console.log(persona.redes);
+
+      // acceder a objetos
+      console.log(persona["apellido"]);
+      console.log(persona.apellido);
+      persona.fullname();
+
+      // metos del prototipo Object
+      console.log(Object.keys(persona));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numbers</title>
+  </head>
+  <body>
+    <script>
+      // Numbers
+      let x = 7.19;
+      console.log(x.toFixed(1)); // decimal
+      console.log(x.toFixed(2));
+      whole = parseInt(x);
+      console.log(whole);
+      // take care, ohh
+      let number = 10.5;
+      let strNumber = "10.5";
+      console.log(number + strNumber); // add does not work
+      console.log(number + parseFloat(strNumber));
+      let obj = new Number();
+      console.log(obj);
+      console.log(typeof obj);
+    </script>
+  </body>
+</html>

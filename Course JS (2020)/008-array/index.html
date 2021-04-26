@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <body>
+    <script>
+      // array
+      const a = [];
+      const b = [1, "c", "cadena", ["A", "B", "C"], true, 2.99];
+      console.log(b);
+
+      // indexing
+      console.log(b[2]);
+      console.log(b[3][2]);
+
+      // other way of declaration
+      const data = Array.of(20.5, 0.5, 16.9, 20.9);
+      console.log(data);
+
+      // usando el constructor
+      const elements = Array(10).fill(0);
+      console.log(elements);
+
+      // metodos en los arrays
+      const colores = ["Rojo", "Verde", "Azul", "Amarillo"];
+      colores.push("Morado");
+      console.log(colores);
+    </script>
+  </body>
+</html>

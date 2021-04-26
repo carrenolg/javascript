@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Const</title>
+  </head>
+  <body>
+    <script>
+      // una const no puede inicializarse vacia
+      // const PI;
+      const PI = 3.1416;
+      console.log(PI);
+      // Objectos
+      const objecto = {
+        edad: 31,
+        nombre: "Gio",
+      };
+      // arreglos
+      const colores = ["blanco", "negro", "amarillo"];
+      console.log(objecto);
+      console.log(colores);
+
+      // agregar una nueva propiedad
+      objecto.correo = "gio@gmail.com";
+      // agregar un item a el array
+      colores.push("verde");
+      // print
+      console.log(objecto);
+      console.log(colores);
+
+      // Una constante de tipo primitivo no puede cambiar su valor
+      // Un array o objecto no pertenece a los tipos primitivos,
+      // por lo tanto puedes modificar sus valores.
+      const persona = {
+        name: "Luis",
+        gender: "M",
+      };
+      console.log(persona);
+      persona = 3.1416;
+      console.log(persona);
+    </script>
+  </body>
+</html>
