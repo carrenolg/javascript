@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+  </head>
+  <body>
+    <script>
+      // Un prototype tiene la capacidad de heredar
+      // Conceptos iniciales
+
+      // 1. objecto literal {}
+      console.log({
+        name: "luis",
+        edad: 31,
+        genero: "M",
+      });
+
+      // 2. working with literals
+      const car1 = {
+        model: 2001,
+        color: "red",
+        manufacturer: "mazda",
+      }; 
+
+      const car2 = {
+        model: 2002,
+        color: "blue",
+        manufacturer: "mazda",
+      };
+
+      console.log(car1, car2);
+
+      // 3. working with constructor function
+      function Car(model, color, manufacturer) {
+        this.model = model;
+        this.color = color;
+        this.manufacturer = manufacturer;
+        this.run = function () {
+          console.log("run.. run..");
+        };
+      }
+
+      const a = new Car(2010, "white", "mazda");
+      const b = new Car(2020, "black", "mazda");
+      a.run();
+      b.run();
+      console.log(a, b);
+
+      // 4. working with Prototype
+      // add new method to the Car prototype
+      Car.prototype.drive = function () {
+        console.log("driving.. driving..");
+      };
+      a.drive();
+      b.drive();
+
+      // Nota: run(): se duplica en cada instancia
+      // drive(): no se duplica, esta asociado con el prototipo,
+      // no con la instancia especifica de cada objecto
+
+      // 5. Heredando de una función
+      // Creamos función constructora
+      // y luego agregamos herencia de objecto Car
+      function Truck(mode, color, manufacturer, capacity) {
+        this.super = Car;
+        this.super(mode, color, manufacturer);
+        this.capacity = capacity;
+      }
+
+      // Aplicando herencia de prototipo
+      Truck.prototype = new Car(); // instance object
+      Truck.prototype.constructor = Car; // only constructor
+
+      // over-writing
+      Truck.prototype.drive = function () {
+        console.log("driving truck.. driving truck..");
+      };
+
+      const t = new Truck(1998, "black", "Kenwork", 500);
+      console.log(t.model);
+      console.log(t);
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

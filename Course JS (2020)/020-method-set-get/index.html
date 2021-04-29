@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method</title>
+  </head>
+  <body>
+    <script>
+      // class
+      class Car {
+        constructor(model, color, manufacturer) {
+          this.model = model;
+          this.color = color;
+          this.manufacturer = manufacturer;
+          this.sold = null;
+        }
+
+        // set
+        set setSold(sold) {
+          this.sold = sold;
+        }
+
+        // get
+        get getSold() {
+          return this.sold;
+        }
+
+        // static
+        static about() {
+          console.log(
+            "The Car class receive 3 parameters: (model, color, manufacturer)"
+          );
+        }
+      }
+      // create object
+      const c1 = new Car(1997, "red", "Ferrari");
+      console.log(c1);
+      c1.setSold = true;
+      console.log(c1.sold);
+      Car.about();
+    </script>
+  </body>
+</html>

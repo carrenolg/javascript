@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Console</title>
+  </head>
+  <body>
+    <script>
+      // Console
+      console.log(console);
+      // Error
+      console.error("This is a error");
+      // warn
+      console.warn("This is a warning");
+      // info
+      console.info("This is a menssage info");
+
+      // check objectos del navegador
+      console.log(window);
+      console.log(document);
+
+      // dir
+      console.dir(window);
+      console.dir(document);
+
+      // table
+      console.table(Object.entries(console).sort());
+
+      const vocals = ["a", "e", "i", "o", "u"];
+      console.table(vocals);
+
+      // assert
+      let x, y = null;
+      let text = "X debe ser mayor que 0";
+      y = 1;
+      x = 1;
+      console.assert(x > 0, (x, y, text));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class</title>
+  </head>
+  <body>
+    <script>
+      // 1. class
+      class Car {
+        constructor(model, color, manufacturer) {
+          this.model = model;
+          this.color = color;
+          this.manufacturer = manufacturer;
+        }
+
+        run() {
+          console.log("Run.. Run..");
+        }
+
+        drive() {
+          console.log("Driving.. Driving..");
+        }
+      }
+
+      // create objects
+      const c1 = new Car(2021, "white", "Mazda");
+      const c2 = new Car(2018, "black", "KIA");
+      console.log(c1);
+      c1.run();
+      c1.drive();
+      console.log(c2);
+      c2.run();
+      c2.drive();
+
+      // 2. Herencia
+      class Truck extends Car {
+        constructor(model, color, manufacturer, capacity) {
+          super(model, color, manufacturer);
+          this.capacity = capacity;
+        }
+
+        // overwriten
+        drive() {
+          console.log("Driving on truck.. driving on truck..");
+        }
+      }
+
+      // create object
+      const t1 = new Truck(1995, "blue", "Kenwork", 500);
+      const t2 = new Truck(2005, "red", "Kenwork", 1800);
+      console.log(t1);
+      t1.run();
+      t1.drive();
+      console.log(t2);
+      t2.run();
+      t2.drive();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow</title>
+  </head>
+  <body>
+    <script>
+      // arrow function
+      //1. simple function
+      const saludar = () => console.log("Hi!");
+      saludar();
+
+      // 2. with parameters
+      const hello = (name) => console.log(`Hello!, mi nombres es ${name}`);
+      hello("Gio");
+
+      // 3. advance function
+      const sumPares = (...numeros) => {
+        let sum = 0;
+        numeros.forEach((v, i) => {
+          if (v % 2 == 0) {
+            sum += v;
+          }
+        });
+        return sum;
+      };
+      console.log(sumPares(10, 20, 30, 40, 50));
+
+      // Nota: Las arrow capturan el contexto
+      // Por lo tanto, no declarar metodos de un objecto como arrow
+
+      // get windown object
+      function test() {
+        // this: represent window object
+        console.log(this);
+      }
+      test();
+      // get object
+      const car = {
+        year: 2000,
+        model: "hatchback",
+        color: "white",
+        rodar: function () {
+          console.log(this);
+        },
+        // no usar arrow, no recomendado
+        lavar: () => {
+          console.log(this);
+        },
+      };
+      car.rodar(); // get car object
+      car.lavar(); // get window object
+    </script>
+  </body>
+</html>

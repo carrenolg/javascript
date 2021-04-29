@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date object</title>
+  </head>
+  <body>
+    <script>
+      // date
+      console.log(Date());
+      // operations with dt
+      timeUniversal = new Date().getUTCHours();
+      timeLocal = new Date().getHours();
+      console.log(timeUniversal, timeLocal);
+      // diff
+      console.log(timeUniversal - timeLocal);
+      // offset
+      console.log(new Date().getTimezoneOffset()); // 300 min
+    </script>
+  </body>
+</html>
