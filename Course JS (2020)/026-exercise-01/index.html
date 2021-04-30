@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise - 01</title>
+  </head>
+  <body>
+    <script>
+      // class
+      class Movie {
+        constructor({
+          id,
+          titulo,
+          director,
+          estreno,
+          pais,
+          generos,
+          calificacion,
+        }) {
+          this.id = id;
+          this.titulo = titulo;
+          this.director = director;
+          this.estreno = estreno;
+          this.pais = pais;
+          this.generos = generos;
+          this.calificacion = calificacion;
+
+          this.validar(id);
+          this.validarTitulo(titulo);
+          this.validarYear(estreno);
+          this.validarPais(pais);
+          this.validarGeneros(generos);
+          this.validarClificacion(calificacion);
+        }
+
+        // static methods
+        static get generos() {
+          return ["SCI", "Animation", "Comedy", "Crime"];
+        }
+
+        static showGeneros() {
+          return console.info(`Generos: ${Movie.generos.join(",")}`);
+        }
+
+        // methods
+        validarCadena(property, value) {
+          if (!value) {
+            return console.warn(
+              `El valor de propiedad [${property}] es vacio. Value: [${value}]`
+            );
+          }
+
+          if (typeof value !== "string") {
+            return console.error(
+              `El valor de propiedad [${property}] no es una cadena. Value: [${value}]`
+            );
+          }
+
+          return true;
+        }
+
+        validarNumero(property, value) {
+          if (!value) {
+            return console.warn(
+              `El valor de propiedad [${property}] es vacio. Value: [${(value = null)}]`
+            );
+          }
+
+          if (typeof value !== "number") {
+            return console.error(
+              `El valor de propiedad [${property}] no es un entero. Value: [${value}]`
+            );
+          }
+
+          return true;
+        }
+
+        validarArray(property, value) {
+          if (!value) {
+            return console.warn(
+              `El valor de propiedad [${property}] es vacio. Value: [${value}]`
+            );
+          }
+
+          if (!(value instanceof Array)) {
+            return console.error(
+              `El valor de propiedad [${property}] no es un array. Value: [${value}]`
+            );
+          }
+
+          if (value.length === 0) {
+            return console.error(`La propiedad [${property}] no tiene datos`);
+          }
+
+          for (let item of value) {
+            this.validarCadena(property, item);
+          }
+
+          return true;
+        }
+
+        validarLongitud(property, value, maxLength) {
+          let InputLength = value.length;
+          // validar
+          if (InputLength > maxLength) {
+            return console.error(
+              `Propiedad [${property}] excede el máximo de caracteres [${maxLength}]. Value: [${value}] Length: [${InputLength}]`
+            );
+          }
+        }
+
+        validar(id) {
+          if (this.validarCadena("IMDB id", id)) {
+            let patterm = /^([a-z]{2})([0-9]{7})$/;
+            let expReg = new RegExp(patterm, "ig");
+            let match = expReg.test(id);
+
+            if (!match) {
+              return console.error(`IMDB id [${id}] no es valido.`);
+            }
+          }
+        }
+
+        validarTitulo(value) {
+          if (this.validarCadena("Title", value)) {
+            this.validarLongitud("Title", value, 100);
+          }
+        }
+
+        validarDirector(value) {
+          if (this.validarCadena("Director", value)) {
+            this.validarLongitud("Director", value, 50);
+          }
+        }
+
+        validarYear(value) {
+          if (this.validarNumero("Year", value)) {
+            let patterm = /^[0-9]{4}$/;
+            let expReg = new RegExp(patterm, "ig");
+            let match = expReg.test(value) && 1900 <= value && value <= 2999;
+
+            if (!match) {
+              return console.error(`Year [${value}] no es valido.`);
+            }
+          }
+        }
+
+        validarPais(value) {
+          this.validarArray("Pais", value);
+        }
+
+        validarGeneros(value) {
+          if (this.validarArray("Generos", value)) {
+            for (let item of value) {
+              if (!Movie.generos.includes(item)) {
+                console.error(`Genero no incluido [${item}]`);
+              }
+            }
+          }
+        }
+
+        validarClificacion(value) {
+          if (this.validarNumero("Calificación", value)) {
+            if (0 <= value && value <= 10) {
+              this.calificacion = value.toFixed(1);
+            } else {
+              console.warn(
+                `La Calificación debe estar entre 0 y 10. Input Value: [${value}]`
+              );
+            }
+          }
+        }
+
+        fichaTecnica() {
+          console.info(`Fecha Tecnica\n 
+            Titulo: ${this.titulo}\n
+            Director: ${this.director}\n
+            Año: ${this.estreno}\n
+            Pais: ${this.pais.join("-")}\n
+            Generos: ${this.generos.join(", ")}\n
+            Calificación: ${this.calificacion}\n
+          `);
+        }
+      }
+
+      // Create object
+      const m = new Movie({
+        id: "tt3303910",
+        titulo: "Matrix",
+        director: "Steven",
+        estreno: 2021,
+        pais: ["USA", "Mexico"],
+        generos: ["SCI", "Comedy", "Crime"],
+        calificacion: 5.3756,
+      });
+
+      console.log(m);
+      Movie.showGeneros();
+      m.fichaTecnica();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Object</title>
+  </head>
+  <body>
+    <script>
+      // math
+      sqrt = Math.sqrt(25);
+      console.log(sqrt);
+
+      // random
+      r = Math.random(); // num: between 0 and 1
+      console.log(r);
+
+      // random integer
+      function random(min, max) {
+        const num = Math.floor(Math.random() * (max - min + 1)) + min;
+        return num;
+      }
+
+      console.log(random(1, 100));
+    </script>
+  </body>
+</html>

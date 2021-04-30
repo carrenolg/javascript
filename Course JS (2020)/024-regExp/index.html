@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>regExp</title>
+  </head>
+  <body>
+    <script>
+      // regExp
+      let pattern = /test\d?/;
+
+      let text =
+        "The latest test1 7548 designs evolved from Colombia test2 (526) to Brazil (527).";
+
+      let re = new RegExp(pattern, "g");
+
+      let result = undefined;
+
+      // exec
+      result = re.exec(text);
+      console.log(result);
+
+      // test
+      result = re.test(text);
+      console.log(result);
+
+      // match
+      result = text.match(re);
+      console.log(result);
+
+      // match all
+      result = [...text.matchAll(re)];
+      console.log(result);
+
+      // search
+      result = text.search(re);
+      console.log(result);
+
+      // repalce
+      text = "Brasil campeón del mundo.";
+      result = text.replace("Brasil", "Colombia");
+      console.log(result);
+    </script>
+  </body>
+</html>
