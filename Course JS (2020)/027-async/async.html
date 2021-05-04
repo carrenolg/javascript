@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Async JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // async
+      function callback(value, callback) {
+        setTimeout(() => {
+          console.log("run callback");
+          callback(Math.pow(value, 2));
+        }, 2000);
+      }
+
+      // call
+      callback(1, (pow) => {
+        console.log("pow:", pow);
+        callback(2, (pow) => {
+          console.log("pow:", pow);
+          callback(3, (pow) => {
+            console.log("pow:", pow);
+            callback(4, (pow) => {
+              console.log("pow:", pow);
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

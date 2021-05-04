@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Promise JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // promise
+      function powPromise(number) {
+        const promise = new Promise((resolve, reject) => {
+          if (typeof number !== "number") {
+            reject({
+              erroMsj: `El valor ingresado ${number} no es un número`,
+            });
+          }
+          setTimeout(() => {
+            resolve({
+              number,
+              pow: Math.pow(number, 2),
+            });
+          }, 2000);
+        });
+        return promise;
+      }
+
+      // call
+      powPromise(0)
+        .then((result) => {
+          console.log(result);
+          return powPromise(1);
+        })
+        .then((result) => {
+          console.log(result);
+          return powPromise(2);
+        })
+        .then((result) => {
+          console.log(result);
+          return powPromise(3);
+        })
+        .then((result) => {
+          console.log(result);
+          return powPromise(4);
+        })
+        .then((result) => {
+          console.log(result);
+          return powPromise(5);
+        })
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>
