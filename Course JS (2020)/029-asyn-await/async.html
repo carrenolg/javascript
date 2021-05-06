@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Async await JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // promise
+      function powPromise(number) {
+        const promise = new Promise((resolve, reject) => {
+          if (typeof number !== "number") {
+            reject({
+              erroMsj: `El valor ingresado ${number} no es un número`,
+            });
+          }
+          setTimeout(() => {
+            resolve({
+              number,
+              pow: Math.pow(number, 2),
+            });
+          }, 2000);
+        });
+        return promise;
+      }
+
+      // async
+      async function asyncCall() {
+        try {
+          console.log();
+          let obj = await powPromise(0);
+          console.log(`Async a: pow = ${obj.pow}`);
+
+          obj = await powPromise(1);
+          console.log(`Async a: pow = ${obj.pow}`);
+
+          obj = await powPromise(2);
+          console.log(`Async a: pow = ${obj.pow}`);
+
+          obj = await powPromise(3);
+          console.log(`Async a: pow = ${obj.pow}`);
+
+          obj = await powPromise(4);
+          console.log(`Async a: pow = ${obj.pow}`);
+
+          obj = await powPromise(5);
+          console.log(`Async a: pow = ${obj.pow}`);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      const asyncCallExpress = async () => {
+        try {
+          console.log();
+          let obj = await powPromise(6);
+          console.log(`Async b: pow = ${obj.pow}`);
+
+          obj = await powPromise(7);
+          console.log(`Async b: pow = ${obj.pow}`);
+
+          obj = await powPromise(8);
+          console.log(`Async b: pow = ${obj.pow}`);
+
+          obj = await powPromise(9);
+          console.log(`Async b: pow = ${obj.pow}`);
+
+          obj = await powPromise(10);
+          console.log(`Async b: pow = ${obj.pow}`);
+
+          obj = await powPromise(11);
+          console.log(`Async b: pow = ${obj.pow}`);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      // call
+      asyncCall();
+      asyncCallExpress();
+    </script>
+  </body>
+</html>

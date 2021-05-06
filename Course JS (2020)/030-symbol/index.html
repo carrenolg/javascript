@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Symbol JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // create symbol
+      const ID = Symbol();
+      const ID2 = Symbol();
+      console.log(ID, ID2);
+      console.log(ID === ID2);
+
+      // add unique property
+      const obj = {
+        name: "Luis",
+      };
+      const AGE = Symbol("age");
+      const SALUDAR = Symbol("saludar");
+      obj[AGE] = 31; // should use []
+      obj[SALUDAR] = function () {
+        console.log("Hi!, I'm ", this.name);
+      };
+      console.log(obj);
+      console.log(obj[AGE]); // it's a variable
+      console.log(obj[SALUDAR]); // it's a func
+      // add no unique
+      obj.AGE = 31;
+      console.log(obj.AGE);
+
+      // check property
+      // 1. not show Symbols property
+      for (property in obj) {
+        console.log(property);
+      }
+
+      // 2. show Symbol prop
+      console.log(Object.getOwnPropertySymbols(obj));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Set and map JavaScript</title>
+  </head>
+  <body>
+    <script>
+      /*
+      // 1. Set
+      const s = new Set([1, 2, 3, 4, 5, 5]);
+      console.log(s); // no duplicated
+
+      // add
+      s.add(6);
+      s.add(7);
+      console.log(s);
+
+      // has
+      const t = new Set(["one", "two", "three", "forth"]);
+      console.log(t.has("five"));
+      console.log(t.has("one"));
+
+      // iterate
+      for (let item of t) {
+        console.log(item);
+      }
+
+      // Set to array (sprea)
+      let arr = [...t];
+      for (let item of arr) {
+        console.log(item);
+      }
+
+      // keys and values
+      const a = new Set([1, 2, 3, 4, 5]);
+      for (let value of a.values()) {
+        console.log(value);
+      }
+      for (let key of a.keys()) {
+        console.log(key);
+      }
+
+      // entries
+      const objs = new Set([{ one: 1 }]);
+      for (let [key, value] of objs.entries()) {
+        console.log(key, value);
+      }*/
+
+      // 2. maps
+      const m = new Map();
+      m.set("pow", Math.pow(1, 2));
+      m.set("pow2", Math.pow(2, 2));
+      m.set(undefined,"variable undefined");
+      m.set(null,"value is null");
+      m.set(null,"value is null 2"); // re-written
+
+      console.log(m.get("pow"));
+      console.log(m.get("pow2"));
+      console.log(m.get(undefined));
+      console.log(m.get(null));
+    </script>
+  </body>
+</html>

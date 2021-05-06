@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Exercise Async JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // program flow
+      function resolvePro01() {
+        console.log("starting pro01 promise");
+        let agregate = 0;
+        let array = Array(500000).fill(10);
+
+        return new Promise((resolve) => {
+          array.forEach((element) => {
+            agregate += Math.sqrt(element);
+          });
+          resolve(agregate);
+          console.log("pro01 promise is done");
+        });
+      }
+
+      function resolvePro02() {
+        console.log("starting pro02 promise");
+        let agregate = 0;
+        let array = Array(1000000).fill(10);
+
+        return new Promise((resolve) => {
+          array.forEach((element) => {
+            agregate += Math.sqrt(element);
+          });
+          resolve(agregate);
+          console.log("pro02 promise is done");
+        });
+      }
+      /*
+      function resolvePro01() {
+        console.log("starting slow promise");
+        return new Promise((resolve) => {
+          setTimeout(function () {
+            resolve("slow");
+            console.log("slow promise is done");
+          }, 2000);
+        });
+      }
+
+      function resolvePro02() {
+        console.log("starting fast promise");
+        return new Promise((resolve) => {
+          setTimeout(function () {
+            resolve("fast");
+            console.log("fast promise is done");
+          }, 1000);
+        });
+      }*/
+
+      async function sequentialStart() {
+        console.log("==SEQUENTIAL START==");
+        // 1. start time
+        const start = Date.now();
+
+        // Running
+        const pro1 = await resolvePro01();
+        console.log(pro1);
+
+        const pro2 = await resolvePro02();
+        console.log(pro2);
+
+        // 2. end time
+        const end = Date.now();
+        console.log("SEQUENTIAL DURATION", end - start);
+      }
+
+      async function concurrentStart() {
+        console.log("==CONCURRENT START with await==");
+        // 1. start time
+        const start = Date.now();
+
+        // Running
+        const pro1 = resolvePro01();
+        const pro2 = resolvePro02();
+
+        console.log(await pro1);
+        console.log(await pro2);
+
+        // 2. end time
+        const end = Date.now();
+        console.log("CONCURRENT START DURATION", end - start);
+      }
+
+      function concurrentPromise() {
+        console.log("==CONCURRENT START with Promise.all==");
+        // 1. start time
+        const start = Date.now();
+
+        // Running
+        return Promise.all([resolvePro01(), resolvePro02()]).then(
+          (messages) => {
+            console.log(messages[0]); //
+            console.log(messages[1]); //
+            // 2. end time
+            const end = Date.now();
+            console.log("CONCURRENT Promise DURATION", end - start);
+          }
+        );
+      }
+
+      async function parallel() {
+        console.log("==PARALLEL with await Promise.all==");
+        // 1. start time
+        const start = Date.now();
+
+        // Start 2 "jobs" in parallel and wait for both of them to complete
+        await Promise.all([
+          (async () => console.log(await resolvePro01()))(),
+          (async () => console.log(await resolvePro02()))(),
+        ]);
+
+        // 2. end time
+        const end = Date.now();
+        console.log("PARALLEL Promise DURATION", end - start);
+      }
+      // call
+      // sequentialStart();
+      // concurrentStart();
+      // concurrentPromise();
+      setTimeout(parallel, 10000);
+      //parallel();
+    </script>
+  </body>
+</html>

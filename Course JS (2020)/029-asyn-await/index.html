@@ -12,78 +12,97 @@
   </head>
   <body>
     <script>
-      // promise
-      function powPromise(number) {
-        const promise = new Promise((resolve, reject) => {
-          if (typeof number !== "number") {
-            reject({
-              erroMsj: `El valor ingresado ${number} no es un número`,
-            });
-          }
-          setTimeout(() => {
-            resolve({
-              number,
-              pow: Math.pow(number, 2),
-            });
-          }, 2000);
-        });
-        return promise;
-      }
-
-      // async
-      async function asyncCall() {
-        try {
-          console.log();
-          let obj = await powPromise(0);
-          console.log(`Async a: pow = ${obj.pow}`);
-
-          obj = await powPromise(1);
-          console.log(`Async a: pow = ${obj.pow}`);
-
-          obj = await powPromise(2);
-          console.log(`Async a: pow = ${obj.pow}`);
-
-          obj = await powPromise(3);
-          console.log(`Async a: pow = ${obj.pow}`);
-
-          obj = await powPromise(4);
-          console.log(`Async a: pow = ${obj.pow}`);
-
-          obj = await powPromise(5);
-          console.log(`Async a: pow = ${obj.pow}`);
-        } catch (err) {
-          console.log(err);
+      const powFunc = (range) => {
+        let start = Date.now();
+        let i = 0;
+        while (i < range) {
+          // console.log(i);
+          i += 1;
+          pow = Math.pow(i, 5);
+          console.log(pow);
         }
-      }
-
-      const asyncCallExpress = async () => {
-        try {
-          console.log();
-          let obj = await powPromise(6);
-          console.log(`Async b: pow = ${obj.pow}`);
-
-          obj = await powPromise(7);
-          console.log(`Async b: pow = ${obj.pow}`);
-
-          obj = await powPromise(8);
-          console.log(`Async b: pow = ${obj.pow}`);
-
-          obj = await powPromise(9);
-          console.log(`Async b: pow = ${obj.pow}`);
-
-          obj = await powPromise(10);
-          console.log(`Async b: pow = ${obj.pow}`);
-
-          obj = await powPromise(11);
-          console.log(`Async b: pow = ${obj.pow}`);
-        } catch (err) {
-          console.log(err);
-        }
+        let end = Date.now();
+        // console.log("duration:", end - start);
+        return end - start;
       };
 
-      // call
+      const sqrtFunc = (range) => {
+        let start = Date.now();
+        let i = 0;
+        while (i < range) {
+          // console.log(i);
+          i += 1;
+          sqrt = Math.sqrt(i);
+          console.log(Number.parseFloat(sqrt).toFixed(2));
+        }
+        let end = Date.now();
+        // console.log("duration:", end - start);
+        return end - start;
+      };
+
+      function call() {
+        let start = Date.now();
+        let t1 = powFunc(200);
+        let t2 = sqrtFunc(200);
+        console.log("duration t1", t1);
+        console.log("duration t2", t2);
+        let end = Date.now();
+        console.log("duration NO async:", end - start);
+        return end - start;
+      }
+
+      // async await
+      const powPromise = async (range) => {
+        let start = Date.now();
+        let i = 0;
+        while (i < range) {
+          // console.log(i);
+          i += 1;
+          pow = Math.pow(i, 5);
+          console.log(pow);
+        }
+        let end = Date.now();
+        // console.log("duration:", end - start);
+        return end - start;
+      };
+
+      const sqrtPromise = async (range) => {
+        let start = Date.now();
+        let i = 0;
+        while (i < range) {
+          // console.log(i);
+          i += 1;
+          sqrt = Math.sqrt(i);
+          console.log(Number.parseFloat(sqrt).toFixed(2));
+        }
+        let end = Date.now();
+        // console.log("duration:", end - start);
+        return end - start;
+      };
+
+      async function asyncCall() {
+        let start = Date.now();
+        console.log("throw powPromise");
+        let t1 = await powPromise(200);
+        console.log("throw sqrtPromise");
+        let t2 = await sqrtPromise(200);
+        console.log("duration async t1", t1);
+        console.log("duration async t2", t2);
+        let end = Date.now();
+        console.log(" async:", end - start);
+        // console.log("duration async:", end - start);
+      }
+
+      /*let r = call();
+      console.log("log", r);*/
+
       asyncCall();
-      asyncCallExpress();
+      setTimeout(() => {
+        console.log("computing... It is comeback");
+      }, 3000);
+      console.log("Estamos esperando que responda asyncCall!");
+
+      //call();
     </script>
   </body>
 </html>

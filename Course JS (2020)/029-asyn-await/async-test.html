@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Async JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // main flow
+      var agregate = 0;
+
+      async function processOne(range) {
+        console.log("running process 1 ...");
+        let i = 0;
+        let pow = 0;
+        while (i < range) {
+          pow += Math.pow(i, 5);
+          console.log("i", i);
+          agregate += i;
+          i += 1;
+        }
+      }
+
+      async function processTwo(range) {
+        console.log("running process 2 ...");
+        let i = 0;
+        let pow = 0;
+        while (i < range) {
+          pow += Math.pow(i, 5);
+          console.log("j", i);
+          agregate += i;
+          i += 1;
+        }
+      }
+
+      async function asyncCall() {
+        await processOne(100);
+        // console.log("agragate", agregate);
+        await processTwo(100);
+        console.log("agragate", agregate);
+      }
+
+      // normal call
+      //processOne(100);
+      //processTwo(100);
+
+      // async call
+      asyncCall();
+
+      for (let i = 0; i < 100; i++) {
+        console.log("working on other task ...", i);
+        agregate += i;
+      }
+
+      console.log("working after .. what?");
+    </script>
+  </body>
+</html>
