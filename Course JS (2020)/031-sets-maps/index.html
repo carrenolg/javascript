@@ -57,14 +57,29 @@
       const m = new Map();
       m.set("pow", Math.pow(1, 2));
       m.set("pow2", Math.pow(2, 2));
-      m.set(undefined,"variable undefined");
-      m.set(null,"value is null");
-      m.set(null,"value is null 2"); // re-written
+      m.set(undefined, "variable undefined");
+      m.set(null, "value is null");
+      m.set(null, "value is null 2"); // re-written
 
       console.log(m.get("pow"));
       console.log(m.get("pow2"));
       console.log(m.get(undefined));
       console.log(m.get(null));
+
+      for (let [key, value] of m) {
+        console.log(`m[${key}] = ${value}`);
+      }
+
+      // cloning
+      let original = new Map([
+        [1, "one"],
+        [2, "two"],
+        [3, "three"],
+      ]);
+
+      let clone = new Map(original);
+      console.log(clone.get(3)); // three
+      console.log(original === clone); // false
     </script>
   </body>
 </html>

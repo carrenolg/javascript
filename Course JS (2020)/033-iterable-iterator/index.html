@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Iterable and iterator JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // 1. iterable
+      let iterable = [1, 2, 3, 4, 5];
+      console.log(iterable);
+
+      const iterator = iterable[Symbol.iterator]();
+      console.log(iterator);
+
+      let next = iterator.next();
+      console.log(next);
+
+      while (!next.done) {
+        console.log(next.value);
+        next = iterator.next();
+      }
+
+      // simple way
+      for (let item of iterable) {
+        console.log(item);
+      }
+    </script>
+  </body>
+</html>

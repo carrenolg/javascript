@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>weakset and weakmap JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // 1. weakset weakmap
+      let ws = new WeakSet([{ 1: "one" }, { 2: "two" }, { 1: "three" }]);
+      console.log(ws);
+
+      // add objects
+      let wset = new WeakSet();
+      let obj1 = {
+        name: "Luis",
+        age: "31",
+      };
+
+      let obj2 = {
+        name: "Jen",
+        age: "24",
+      };
+
+      let obj3 = {
+        name: "Other",
+        age: "null",
+      };
+
+      wset.add(obj1);
+      wset.add(obj2);
+      wset.add(obj3);
+
+      console.log(wset);
+      obj3 = null;
+      console.log(wset);
+
+      // set to null
+
+      /*setInterval(() => {
+        console.log(wset);
+      }, 1000);
+
+      setTimeout(() => {
+        obj3 = null;
+      }, 5000);*/
+
+      // 2. Weakmap
+      let wm = new WeakMap([
+        [{ id: 1 }, "one"],
+        [{}, "empty"],
+        [{ id: 2 }, "two"],
+      ]);
+
+      let ob1 = { id: 1 };
+      let ob2 = { id: 2 };
+      let ob3 = { id: 3 };
+
+      let wmap = new WeakMap();
+      wmap.set(ob1);
+      wmap.set(ob2);
+      wmap.set(ob3);
+      console.log(wm);
+
+      // set to null
+      ob2 = null;
+      console.log(wm);
+    </script>
+  </body>
+</html>

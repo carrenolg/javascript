@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Proxy JavaScript</title>
+  </head>
+  <body>
+    <script>
+      //1. proxy
+      const target = {
+        name: null,
+        lastName: null,
+        age: null,
+      };
+      const handler = {
+        // get implement
+        get: function (target, prop, receiver) {
+          return "default value";
+        },
+        // set implement
+        set: function (obj, prop, value) {
+          // prop validation
+          if (prop === "age") {
+            if (!Number.isInteger(value)) {
+              throw new TypeError("The age is not an integer");
+            }
+            if (value > 200) {
+              throw new TypeError("The age is invalid");
+            }
+          }
+
+          if (Object.keys(obj).indexOf(prop) === -1) {
+            return console.error(`The prop [${prop}] is not valid`);
+          } else {
+            obj[prop] = value;
+          }
+        },
+      };
+
+      const gio = new Proxy(target, handler);
+
+      console.log(gio.name); // default value
+
+      gio.name = "Luis G.";
+      gio.lastName = "Carreño Ortiz";
+      gio.age = 31;
+      gio.email = "gio@carrenolg.co";
+
+      console.log(target);
+      console.log(gio);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../000-data/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Generator JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // 1. generator
+      function* powTo2(range) {
+        let number = 0;
+        while (number <= range) {
+          yield Math.pow(number, 2);
+          number++;
+        }
+      }
+      // consume
+      let generator = powTo2(10);
+      console.log(generator);
+
+      for (let i of generator) {
+        console.log(i);
+      }
+
+      // generator to array  (spread operator)
+      let arr = [...powTo2(10)];
+      console.log(arr);
+
+
+    </script>
+  </body>
+</html>
